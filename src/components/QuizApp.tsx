@@ -262,7 +262,6 @@ const QuizApp = () => {
             (answer) => quizData[parseInt(Object.keys(selectedAnswers)[0])].correctAnswer === answer
           ).length}
           unattemptedQuestions={quizData.length - Object.keys(selectedAnswers).length}
-          darkMode={darkMode}
         />
       )}
     </div>
