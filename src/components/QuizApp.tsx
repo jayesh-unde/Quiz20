@@ -112,16 +112,7 @@ const QuizApp = () => {
   const [darkMode, setDarkMode] = useState(true);
 
   // Timer effect
-  useEffect(() => {
-    if (timeLeft > 0 && !isQuizComplete) {
-      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
-      return () => clearTimeout(timer);
-    } else if (timeLeft === 0) {
-      handleQuizComplete();
-    }
-  }, [timeLeft, isQuizComplete]);
 
-  // Handle quiz completion
   const handleQuizComplete = () => {
     setIsQuizComplete(true);
     let totalScore = 0;
@@ -132,6 +123,18 @@ const QuizApp = () => {
     });
     setScore(totalScore);
   };
+  
+  useEffect(() => {
+    if (timeLeft > 0 && !isQuizComplete) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (timeLeft === 0) {
+      handleQuizComplete();
+    }
+  }, [timeLeft, isQuizComplete,handleQuizComplete]);
+
+  // Handle quiz completion
+  
 
   // Handle option selection
   const handleOptionSelect = (optionId: string) => {
