@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaShare, FaEye } from 'react-icons/fa';
-import { BsSun, BsMoon } from 'react-icons/bs';
 
 interface QuizResultProps {
   score: number;
@@ -8,6 +7,7 @@ interface QuizResultProps {
   correctAnswers: number;
   incorrectAnswers: number;
   unattemptedQuestions: number;
+  darkMode: boolean;
 }
 
 const QuizResult: React.FC<QuizResultProps> = ({
@@ -16,7 +16,7 @@ const QuizResult: React.FC<QuizResultProps> = ({
   correctAnswers,
   incorrectAnswers,
   unattemptedQuestions,
-  darkMode
+  darkMode,
 }) => {
   const totalAnswered = correctAnswers + incorrectAnswers;
   const percentageCorrect = (correctAnswers / totalAnswered) * 100;
