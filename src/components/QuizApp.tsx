@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useCallback, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaLanguage } from "react-icons/fa";
 import { BsSun, BsMoon } from "react-icons/bs";
 import QuizResult from './QuizResult';
@@ -122,7 +122,7 @@ const QuizApp = () => {
   }, [timeLeft, isQuizComplete]);
 
   // Handle quiz completion
-  const handleQuizComplete = useCallback(() => {
+  const handleQuizComplete = () => {
     setIsQuizComplete(true);
     let totalScore = 0;
     Object.entries(selectedAnswers).forEach(([questionIndex, answer]) => {
@@ -131,17 +131,18 @@ const QuizApp = () => {
       }
     });
     setScore(totalScore);
-  }, [selectedAnswers]);  // Dependency array to update when selectedAnswers change
+  };
 
-  // Timer effect
-  useEffect(() => {
-    if (timeLeft > 0 && !isQuizComplete) {
-      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
-      return () => clearTimeout(timer);
-    } else if (timeLeft === 0 && !isQuizComplete) {
-      handleQuizComplete();
+  // Handle option selection
+  const handleOptionSelect = (optionId: string) => {
+    if (!isQuizComplete) {
+      setSelectedAnswers({
+        ...selectedAnswers,
+        [currentQuestion]: optionId
+      });
     }
-  }, [timeLeft, isQuizComplete, handleQuizComplete]); 
+  };
+
   // Navigation handlers
   const handleNext = () => {
     if (currentQuestion < quizData.length - 1) {
