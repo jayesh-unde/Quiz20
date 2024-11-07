@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaShare, FaEye } from 'react-icons/fa';
-import { BsSun, BsMoon } from 'react-icons/bs';
+
 
 interface QuizResultProps {
   score: number;
