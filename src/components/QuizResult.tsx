@@ -8,6 +8,7 @@ interface QuizResultProps {
   correctAnswers: number;
   incorrectAnswers: number;
   unattemptedQuestions: number;
+  darkMode: boolean;
 }
 
 const QuizResult: React.FC<QuizResultProps> = ({
